@@ -1,0 +1,21 @@
+{
+  "name": "seo-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Zero-API SEO content engine: discover → promote → publish markdown articles with Claude Opus 4.6.",
+  "scripts": {
+    "discover": "node scripts/discover.js",
+    "promote": "node scripts/promote.js",
+    "publish": "node scripts/publish.js",
+    "test": "node --test tests/"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^4.5.0",
+    "google-spreadsheet": "^4.1.4",
+    "google-auth-library": "^9.14.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

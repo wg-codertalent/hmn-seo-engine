@@ -1,0 +1,39 @@
+name: Promote Approved Ideas
+
+on:
+  schedule:
+    - cron: "0 * * * *"   # hourly
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+defaults:
+  run:
+    working-directory: seo-engine
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install
+      - name: Run promotion
+        env:
+          ANTHROPIC_API_KEY:           ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_SHEET_ID:             ${{ secrets.GOOGLE_SHEET_ID }}
+        run: npm run promote
+      - name: Commit fallback files if changed
+        working-directory: ${{ github.workspace }}
+        run: |
+          git config user.name  "seo-bot"
+          git config user.email "seo-bot@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain seo-engine/data)" ]]; then
+            git add seo-engine/data
+            git commit -m "chore(seo): promote approved ideas"
+            git push
+          fi

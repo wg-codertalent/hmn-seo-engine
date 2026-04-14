@@ -1,0 +1,16 @@
+{
+  "subreddits": ["airbnb_hosts", "AirBnB", "realestateinvesting"],
+  "seedKeywords": [
+    "airbnb london",
+    "airbnb hosting",
+    "short term rental uk",
+    "property management london",
+    "cotswolds holiday let"
+  ],
+  "trendsGeo": "GB",
+  "defaultCategory": "Property Management",
+  "author": {
+    "name": "Host My Nest",
+    "bio": "Host My Nest specialises in creating memorable stays with exceptional service and attention to detail."
+  }
+}
