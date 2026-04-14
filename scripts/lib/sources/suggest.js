@@ -4,10 +4,10 @@ export async function fetchSuggest(seed) {
   if (!res.ok) return [];
   const data = await res.json();
   const suggestions = data[1] || [];
-  return suggestions.map((s) => ({
+  return suggestions.map((s, i) => ({
     source: "google_suggest",
     keyword: s,
-    trend_score: 30,
+    trend_score: Math.round(60 - (i / suggestions.length) * 40),
     reddit_score: 0
   }));
 }

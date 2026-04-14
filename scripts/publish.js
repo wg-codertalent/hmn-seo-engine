@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 // Publishing job: pick next `ready` row → Claude Opus 4.6 → image → commit to blog repo.
-import { generateArticle, generateExcerpt } from "./lib/claude.js";
+import {
+  generateArticle, generateExcerpt, generateSeoTitle,
+  generateSeoDescription, generateCategory, generateCtaBanners
+} from "./lib/claude.js";
 import { generateCoverImage } from "./lib/images.js";
 import {
-  validateCategory, writeArticle, imageAbsPath, imageRelUrl, articleRelPath
+  writeArticle, imageAbsPath, imageRelUrl, articleRelPath
 } from "./lib/github.js";
 import { getRows, storeName } from "./lib/store.js";
 import { slugify, today, buildFrontmatter } from "./lib/util.js";
@@ -20,6 +23,9 @@ async function main() {
     return;
   }
 
+  // Debug: log raw row data to diagnose missing fields
+  console.log("Raw row data:", JSON.stringify(row.toJSON()));
+
   const item = {
     title:       row.get("title"),
     keyword:     row.get("keyword"),
@@ -28,8 +34,11 @@ async function main() {
     articleDate: row.get("articleDate")
   };
 
+  if (!item.title || !item.keyword) {
+    throw new Error(`Row missing required fields — title: "${item.title}", keyword: "${item.keyword}"`);
+  }
+
   console.log(`Publishing: ${item.title}`);
-  await validateCategory(item.category);
 
   const slug = item.slug || slugify(item.title);
   const articleDate = item.articleDate || today();
@@ -37,11 +46,20 @@ async function main() {
   try {
     await row.update({ status: "generating" });
 
-    const [body, excerpt] = await Promise.all([
+    console.log("  Generating content…");
+    const [body, excerpt, category, seoTitle, seoDescription, ctaBanners] = await Promise.all([
       generateArticle(item),
-      generateExcerpt(item.title)
+      generateExcerpt(item.title),
+      generateCategory(item.title, item.keyword),
+      generateSeoTitle(item.title),
+      generateSeoDescription(item.title),
+      generateCtaBanners(item.title, item.keyword)
     ]);
 
+    console.log(`  Category: ${category}`);
+    console.log(`  CTA banners: ${ctaBanners.join(", ")}`);
+
+    console.log("  Generating cover image…");
     await generateCoverImage(item.title, imageAbsPath(slug));
 
     const markdown =
@@ -50,8 +68,11 @@ async function main() {
         slug,
         excerpt,
         cover: imageRelUrl(slug),
-        category: item.category,
-        articleDate
+        category,
+        articleDate,
+        seoTitle,
+        seoDescription,
+        ctaBanners
       }) + "\n" + body + "\n";
 
     const mdPath = await writeArticle(slug, markdown);

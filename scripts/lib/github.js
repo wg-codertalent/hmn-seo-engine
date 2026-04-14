@@ -44,11 +44,11 @@ export async function writeImage(slug, buffer) {
 }
 
 export function imageAbsPath(slug) {
-  return path.join(paths().images, `${slug}.png`);
+  return path.join(paths().images, `${slug}.webp`);
 }
 
 export function imageRelUrl(slug) {
-  return `/images/uploads/${slug}.png`;
+  return `/images/uploads/${slug}.webp`;
 }
 
 export function articleRelPath(slug) {

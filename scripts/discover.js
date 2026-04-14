@@ -30,7 +30,6 @@ async function main() {
     .map((i) => ({
       source: i.source,
       keyword: i.keyword,
-      category: seeds.defaultCategory,
       trend_score: i.trend_score,
       reddit_score: i.reddit_score,
       final_score: i.final_score,

@@ -1,6 +1,6 @@
 import { XMLParser } from "fast-xml-parser";
 
-const xml = new XMLParser({ ignoreAttributes: false });
+const xml = new XMLParser({ ignoreAttributes: false, processEntities: false });
 
 export async function fetchReddit(subreddit) {
   const url = `https://www.reddit.com/r/${subreddit}/top/.rss?t=week`;
@@ -8,10 +8,11 @@ export async function fetchReddit(subreddit) {
   if (!res.ok) return [];
   const parsed = xml.parse(await res.text());
   const entries = parsed.feed?.entry || [];
-  return (Array.isArray(entries) ? entries : [entries]).map((e) => ({
+  const list = Array.isArray(entries) ? entries : [entries];
+  return list.map((e, i) => ({
     source: "reddit",
     keyword: (e.title?.["#text"] || e.title || "").toString().trim(),
     trend_score: 0,
-    reddit_score: 50
+    reddit_score: Math.round(200 - (i / list.length) * 150)
   }));
 }

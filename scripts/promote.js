@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 // Hourly promotion job: approved Ideas → Articles queue as `ready`.
-import seeds from "../config/seeds.json" with { type: "json" };
 import { generateTitle } from "./lib/claude.js";
 import { getRows, appendRows, storeName } from "./lib/store.js";
 import { today } from "./lib/util.js";
@@ -22,7 +21,7 @@ async function main() {
     newArticles.push({
       title,
       keyword,
-      category: row.get("category") || seeds.defaultCategory,
+      category: row.get("category") || "",
       status: "ready",
       articleDate: today()
     });

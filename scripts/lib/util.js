@@ -21,17 +21,25 @@ export function dedupeByKeyword(items) {
   return [...seen.values()].sort((a, b) => b.final_score - a.final_score);
 }
 
-export function buildFrontmatter({ title, slug, excerpt, cover, category, articleDate }) {
+export function buildFrontmatter({ title, slug, excerpt, cover, category, articleDate, seoTitle, seoDescription, ctaBanners }) {
   const { author } = seeds;
+  const banners = (ctaBanners || ["get-my-free-income-projection", "book-a-call", "whatsapp-message"])
+    .map((b) => `  - ${b}`)
+    .join("\n");
   return `---
 layout: article
-title: ${title}
+title: "${title}"
 slug: ${slug}
-excerpt: ${excerpt}
+excerpt: >
+  ${excerpt}
 cover: ${cover}
 category: ${category}
 articleDate: ${articleDate}
 published: true
+ctaBanners:
+${banners}
+seoTitle: ${seoTitle}
+seoDescription: "${seoDescription}"
 author:
   name: ${author.name}
   bio: ${author.bio}
