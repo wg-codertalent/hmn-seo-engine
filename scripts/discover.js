@@ -4,7 +4,9 @@ import seeds from "../config/seeds.json" with { type: "json" };
 import { fetchReddit } from "./lib/sources/reddit.js";
 import { fetchTrends } from "./lib/sources/trends.js";
 import { fetchSuggest } from "./lib/sources/suggest.js";
-import { dedupeByKeyword, today } from "./lib/util.js";
+import { fetchNews } from "./lib/sources/news.js";
+import { fetchBingSuggest } from "./lib/sources/bing.js";
+import { dedupeByKeyword, isRelevant, today } from "./lib/util.js";
 import { getRows, appendRows, tabUrl, storeName } from "./lib/store.js";
 import { notifyDiscovered, notifyFailed } from "./lib/slack.js";
 
@@ -19,7 +21,16 @@ async function main() {
   console.log("Fetching Google Suggest…");
   const suggest = (await Promise.all(seeds.seedKeywords.map(fetchSuggest))).flat();
 
-  const scored = dedupeByKeyword([...reddit, ...trends, ...suggest]);
+  console.log("Fetching Google News RSS…");
+  const news = (await Promise.all(seeds.seedKeywords.map((k) => fetchNews(k, seeds.trendsGeo)))).flat();
+
+  console.log("Fetching Bing Suggest…");
+  const bing = (await Promise.all(seeds.seedKeywords.map(fetchBingSuggest))).flat();
+
+  const raw = [...reddit, ...trends, ...suggest, ...news, ...bing];
+  const relevant = raw.filter((i) => isRelevant(i.keyword));
+  console.log(`Relevance filter: ${relevant.length}/${raw.length} passed.`);
+  const scored = dedupeByKeyword(relevant);
   console.log(`Found ${scored.length} unique ideas.`);
 
   const existingRows = await getRows("Ideas");

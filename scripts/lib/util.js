@@ -9,6 +9,38 @@ export function scoreIdea({ trend_score = 0, reddit_score = 0 }) {
   return Math.round(trend_score * 0.6 + Math.min(reddit_score, 500) * 0.4);
 }
 
+const TOPIC_TOKENS = [
+  "airbnb", "bnb", "superhost",
+  "short term rental", "short-term rental",
+  "holiday let", "holiday rental", "holiday home",
+  "short term let", "short-term let", "short let",
+  "buy-to-let", "buy to let",
+  "vacation rental", "serviced apartment", "serviced accommodation",
+  "furnished rental", "rental property", "rental income",
+  "host", "hosting", "guest",
+  "landlord", "tenant", "lettings", "letting agent",
+  "renters rights", "renter's rights", "tenants rights",
+  "property management", "property investment"
+];
+
+// Geo/locale modifiers and navigational junk that mostly surface in Suggest.
+const BLOCK_TOKENS = [
+  "login", "sign in", "reddit",
+  "ontario", "toronto", "vancouver", "montreal",
+  "australia", "sydney", "melbourne",
+  "new zealand", "auckland",
+  "nyc", "new york", "los angeles", "las vegas", "chicago", "florida", "texas", "miami",
+  "oklahoma", "okc", "kansas city", "kcmo", "knoxville", "akron", "ohio",
+  "singapore", "dubai", "bali"
+];
+
+export function isRelevant(keyword) {
+  const k = String(keyword || "").toLowerCase();
+  if (!k) return false;
+  if (BLOCK_TOKENS.some((t) => k.includes(t))) return false;
+  return TOPIC_TOKENS.some((t) => k.includes(t));
+}
+
 export function dedupeByKeyword(items) {
   const seen = new Map();
   for (const i of items) {
