@@ -15,19 +15,45 @@ export const CTA_BANNERS = [
   "whatsapp-message"
 ];
 
+// Static Host My Nest pages the article can link to. Keep anchors short and descriptive.
+export const SITE_PAGES = [
+  { url: "/services/airbnb-management",           topic: "Airbnb management services" },
+  { url: "/services/property-management",         topic: "Property management services" },
+  { url: "/services/short-term-rental-management", topic: "Short-term rental management" },
+  { url: "/services/personalised-welcome-packs",  topic: "Personalised welcome packs" },
+  { url: "/services/interior-design-and-furnishing", topic: "Interior design and furnishing" },
+  { url: "/services/photography",                 topic: "Professional property photography" },
+  { url: "/services/guest-vetting",               topic: "Guest vetting and screening" },
+  { url: "/services/guest-communication",         topic: "24/7 guest communication" },
+  { url: "/services/price-optimisation",          topic: "Dynamic pricing and revenue optimisation" },
+  { url: "/services",                             topic: "All Host My Nest services" },
+  { url: "/locations",                            topic: "London areas we cover" },
+  { url: "/earnings-estimator",                   topic: "Free short-term rental income estimator" },
+  { url: "/faqs",                                 topic: "Frequently asked questions" },
+  { url: "/about-us",                             topic: "About Host My Nest" },
+  { url: "/contact",                              topic: "Contact Host My Nest" }
+];
+
 export const ARTICLE_SYSTEM =
   "You are an expert SEO copywriter for Host My Nest, a short-term rental and property management company in London. " +
   "Write in clear British English. Use H2 (##) for main sections and H3 (###) for subsections, short paragraphs, " +
-  "and natural internal-link placeholders where appropriate. " +
+  "and weave in contextually relevant internal links to related Host My Nest pages and articles from the supplied list. " +
   "Output ONLY the markdown article body — no frontmatter, no H1, no preamble.";
 
-export const articleUser = ({ title, keyword, category }) =>
-  `Write a 1,500–2,200 word SEO article.
+export const articleUser = ({ title, keyword, category, internalLinks = [] }) => {
+  const articleLinks = internalLinks.map((l) => ({ url: `/blog/${l.slug}`, topic: l.title }));
+  const allLinks = [...SITE_PAGES, ...articleLinks];
+
+  const linkBlock = `\n\nInternal links available — pick 3–6 of the most topically relevant ones and weave them in as natural inline markdown links, e.g. [anchor text](${allLinks[0].url}). Rules: only link when it genuinely helps the reader, use varied anchor text (never the bare URL), never link the same URL twice, and never place links in the intro or The Bottom Line.
+${allLinks.map((l) => `- ${l.url} — ${l.topic}`).join("\n")}`;
+
+  return `Write a 1,500–2,200 word SEO article.
 Title: ${title}
 Primary keyword: ${keyword}
 Category: ${category}
 Structure: short intro, 5–7 H2 sections with H3 subsections where appropriate, closing section called '## The Bottom Line'.
-In The Bottom Line section, summarise the key takeaways and mention how Host My Nest can help readers with their short-term rental needs — whether it's property management, compliance, pricing optimisation, or guest management. Keep it natural, not salesy.`;
+In The Bottom Line section, summarise the key takeaways and mention how Host My Nest can help readers with their short-term rental needs — whether it's property management, compliance, pricing optimisation, or guest management. Keep it natural, not salesy.${linkBlock}`;
+};
 
 export const EXCERPT_SYSTEM = "You write concise SEO meta descriptions.";
 export const excerptUser = (title) =>
@@ -39,7 +65,7 @@ export const titleUser = (keyword) =>
 
 export const SEO_TITLE_SYSTEM = "You write SEO page titles for blog articles.";
 export const seoTitleUser = (title) =>
-  `Write a single SEO page title (max 60 chars, include primary keyword, pipe-separated brand suffix) for: ${title}. Brand is Host My Nest. Output ONLY the title, nothing else.`;
+  `Write a single SEO page title (max 60 chars, include primary keyword, no brand suffix) for: ${title}. Output ONLY the title, nothing else.`;
 
 export const SEO_DESC_SYSTEM = "You write SEO meta descriptions for blog articles.";
 export const seoDescUser = (title) =>
@@ -61,8 +87,9 @@ Available banners:
 Select one or more. Output ONLY the banner IDs, one per line, nothing else.`;
 
 export const imagePrompt = (title) =>
-  `Beautiful editorial photograph of a stylish short-term rental property in London or the English countryside, ` +
-  `relevant to "${title}". Could be a Georgian townhouse in Notting Hill, a Victorian mews in Kensington, ` +
-  `a modern Shoreditch loft, a Chelsea apartment, or a Hampstead period home. ` +
-  `Bright natural light, tasteful interior or exterior, lifestyle magazine quality, photorealistic, 16:9. ` +
+  `Beautiful editorial interior photograph of a stylish short-term rental property in London, ` +
+  `relevant to "${title}". Could be the living room of a Georgian townhouse in Notting Hill, ` +
+  `a bright open-plan kitchen in Kensington, a cosy bedroom in a modern Shoreditch loft, ` +
+  `an elegant lounge in a Chelsea apartment, or a sunlit dining area in a Hampstead period home. ` +
+  `Interior focus, bright natural light, tasteful decor, lifestyle magazine quality, photorealistic, 16:9. ` +
   `ABSOLUTELY NO TEXT, NO LETTERS, NO WORDS, NO SIGNAGE, NO WATERMARKS, NO LOGOS anywhere in the image.`;

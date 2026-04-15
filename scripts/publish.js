@@ -6,7 +6,7 @@ import {
 } from "./lib/claude.js";
 import { generateCoverImage } from "./lib/images.js";
 import {
-  writeArticle, imageAbsPath, imageRelUrl, articleRelPath
+  writeArticle, imageAbsPath, imageRelUrl, articleRelPath, publishMode
 } from "./lib/github.js";
 import { getRows, storeName } from "./lib/store.js";
 import { slugify, today, buildFrontmatter } from "./lib/util.js";
@@ -15,7 +15,7 @@ async function main() {
   if (!process.env.ANTHROPIC_API_KEY) throw new Error("Missing ANTHROPIC_API_KEY");
   if (!process.env.OPENAI_API_KEY)    throw new Error("Missing OPENAI_API_KEY");
 
-  console.log(`Backend: ${storeName}`);
+  console.log(`Backend: ${storeName} | Publish: ${publishMode}`);
   const rows = await getRows("Articles");
   const row = rows.find((r) => (r.get("status") || "").trim() === "ready");
   if (!row) {
@@ -43,12 +43,18 @@ async function main() {
   const slug = item.slug || slugify(item.title);
   const articleDate = item.articleDate || today();
 
+  const internalLinks = rows
+    .filter((r) => (r.get("status") || "").trim() === "published" && r.get("slug") && r.get("title"))
+    .filter((r) => r.get("slug") !== slug)
+    .map((r) => ({ title: r.get("title"), slug: r.get("slug") }))
+    .slice(-25);
+
   try {
     await row.update({ status: "generating" });
 
-    console.log("  Generating content…");
+    console.log(`  Generating content… (${internalLinks.length} internal links available)`);
     const [body, excerpt, category, seoTitle, seoDescription, ctaBanners] = await Promise.all([
-      generateArticle(item),
+      generateArticle({ ...item, internalLinks }),
       generateExcerpt(item.title),
       generateCategory(item.title, item.keyword),
       generateSeoTitle(item.title),
@@ -88,7 +94,6 @@ async function main() {
 
     console.log(`✓ Published ${slug}`);
     console.log(`  ${mdPath}`);
-    console.log(`  ${imageAbsPath(slug)}`);
   } catch (err) {
     await row.update({ status: "error", error: String(err.message || err) });
     throw err;

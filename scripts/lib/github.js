@@ -1,56 +1,171 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-// Resolves the blog repo root. In same-repo mode we assume seo-engine lives
-// one level down from the blog root. Override with BLOG_REPO_ROOT if needed.
-function blogRoot() {
-  if (process.env.BLOG_REPO_ROOT) return process.env.BLOG_REPO_ROOT;
-  return path.resolve(process.cwd(), "..");
+// ── Config ──────────────────────────────────────────────────────────
+
+const ARTICLES_DIR = process.env.ARTICLES_DIR || "content/articles";
+const IMAGES_DIR   = process.env.IMAGES_DIR   || "public/images/uploads";
+
+function isRemoteConfigured() {
+  return !!(process.env.BLOG_REPO_OWNER && process.env.BLOG_REPO_NAME && process.env.BLOG_REPO_TOKEN);
 }
 
-function paths() {
-  const root = blogRoot();
-  return {
-    articles:   path.join(root, process.env.ARTICLES_DIR   || "content/articles"),
-    images:     path.join(root, process.env.IMAGES_DIR     || "public/images/uploads"),
-    categories: path.join(root, process.env.CATEGORIES_DIR || "content/categories")
-  };
+function repoSlug() {
+  return `${process.env.BLOG_REPO_OWNER}/${process.env.BLOG_REPO_NAME}`;
 }
 
-export async function validateCategory(category) {
-  const { categories } = paths();
-  const files = await fs.readdir(categories).catch(() => []);
-  if (!files.length) return; // category dir not found — skip validation
-  const valid = files.map((f) => f.replace(/\.(md|ya?ml|json)$/, ""));
-  if (!valid.includes(category)) {
-    throw new Error(`Category "${category}" not found. Valid: ${valid.join(", ")}`);
-  }
+function baseBranch() {
+  return process.env.BLOG_REPO_BRANCH || "main";
 }
 
-export async function writeArticle(slug, markdown) {
-  const { articles } = paths();
-  await fs.mkdir(articles, { recursive: true });
-  const abs = path.join(articles, `${slug}.md`);
-  await fs.writeFile(abs, markdown);
-  return abs;
-}
-
-export async function writeImage(slug, buffer) {
-  const { images } = paths();
-  await fs.mkdir(images, { recursive: true });
-  const abs = path.join(images, `${slug}.png`);
-  await fs.writeFile(abs, buffer);
-  return abs;
-}
-
-export function imageAbsPath(slug) {
-  return path.join(paths().images, `${slug}.webp`);
-}
+// ── Shared helpers ──────────────────────────────────────────────────
 
 export function imageRelUrl(slug) {
   return `/images/uploads/${slug}.webp`;
 }
 
 export function articleRelPath(slug) {
-  return `${process.env.ARTICLES_DIR || "content/articles"}/${slug}.md`;
+  return `${ARTICLES_DIR}/${slug}.md`;
 }
+
+export function imageAbsPath(slug) {
+  if (isRemoteConfigured()) {
+    return path.join("/tmp", `${slug}.webp`);
+  }
+  const root = process.env.BLOG_REPO_ROOT || path.resolve(process.cwd(), "..");
+  return path.join(root, IMAGES_DIR, `${slug}.webp`);
+}
+
+// ── Local disk writer ───────────────────────────────────────────────
+
+async function writeLocal(slug, markdown) {
+  const root = process.env.BLOG_REPO_ROOT || path.resolve(process.cwd(), "..");
+  const articlesDir = path.join(root, ARTICLES_DIR);
+  await fs.mkdir(articlesDir, { recursive: true });
+  const abs = path.join(articlesDir, `${slug}.md`);
+  await fs.writeFile(abs, markdown);
+  return abs;
+}
+
+// ── GitHub API ──────────────────────────────────────────────────────
+
+const GITHUB_API = "https://api.github.com";
+
+async function gh(method, endpoint, body) {
+  const res = await fetch(`${GITHUB_API}${endpoint}`, {
+    method,
+    headers: {
+      Authorization: `Bearer ${process.env.BLOG_REPO_TOKEN}`,
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      "content-type": "application/json"
+    },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(`GitHub API ${res.status}: ${data.message || JSON.stringify(data)}`);
+  }
+  return data;
+}
+
+// ── Remote writer (branch + single commit + PR) ─────────────────────
+
+async function writeRemote(slug, markdown) {
+  const repo = repoSlug();
+  const base = baseBranch();
+  const branchName = `cms/articles/${slug}`;
+  const articlePath = `${ARTICLES_DIR}/${slug}.md`;
+  const imagePath = `${IMAGES_DIR}/${slug}.webp`;
+
+  // 1. Get the latest commit SHA on the base branch
+  console.log(`  Getting latest ${base} commit…`);
+  const refData = await gh("GET", `/repos/${repo}/git/ref/heads/${base}`);
+  const baseSha = refData.object.sha;
+
+  // 2. Delete existing branch if it exists, then create fresh
+  console.log(`  Creating branch ${branchName}…`);
+  try {
+    await gh("DELETE", `/repos/${repo}/git/refs/heads/${branchName}`);
+    console.log(`  (deleted existing branch)`);
+  } catch { /* branch didn't exist — fine */ }
+  await gh("POST", `/repos/${repo}/git/refs`, {
+    ref: `refs/heads/${branchName}`,
+    sha: baseSha
+  });
+
+  // 3. Get the base tree
+  const commitData = await gh("GET", `/repos/${repo}/git/commits/${baseSha}`);
+  const baseTreeSha = commitData.tree.sha;
+
+  // 4. Read the image from temp location
+  const tempImage = imageAbsPath(slug);
+  const imageBuffer = await fs.readFile(tempImage);
+
+  // 5. Create blobs for both files
+  console.log(`  Creating blobs…`);
+  const [articleBlob, imageBlob] = await Promise.all([
+    gh("POST", `/repos/${repo}/git/blobs`, {
+      content: Buffer.from(markdown).toString("base64"),
+      encoding: "base64"
+    }),
+    gh("POST", `/repos/${repo}/git/blobs`, {
+      content: imageBuffer.toString("base64"),
+      encoding: "base64"
+    })
+  ]);
+
+  // 6. Create a new tree with both files
+  const tree = await gh("POST", `/repos/${repo}/git/trees`, {
+    base_tree: baseTreeSha,
+    tree: [
+      { path: articlePath, mode: "100644", type: "blob", sha: articleBlob.sha },
+      { path: imagePath,   mode: "100644", type: "blob", sha: imageBlob.sha }
+    ]
+  });
+
+  // 7. Create the commit (Netlify CMS style messages)
+  const commitMsg = `content: create articles "${slug}"`;
+  const commit = await gh("POST", `/repos/${repo}/git/commits`, {
+    message: commitMsg,
+    tree: tree.sha,
+    parents: [baseSha]
+  });
+
+  // 8. Update the branch ref to point at the new commit
+  await gh("PATCH", `/repos/${repo}/git/refs/heads/${branchName}`, {
+    sha: commit.sha
+  });
+
+  // 9. Create a pull request
+  console.log(`  Creating pull request…`);
+  const pr = await gh("POST", `/repos/${repo}/pulls`, {
+    title: `content: create articles "${slug}"`,
+    head: branchName,
+    base,
+    body: `Automatically generated by SEO Engine.\n\nThis PR was created on behalf of the CMS.`
+  });
+
+  // 10. Add Decap CMS editorial workflow label so the article appears in the CMS
+  console.log(`  Adding CMS label…`);
+  await gh("POST", `/repos/${repo}/issues/${pr.number}/labels`, {
+    labels: ["netlify-cms/pending_review"]
+  });
+
+  // Clean up temp image
+  await fs.unlink(tempImage).catch(() => {});
+
+  console.log(`  PR: ${pr.html_url}`);
+  return pr.html_url;
+}
+
+// ── Public API ──────────────────────────────────────────────────────
+
+export async function writeArticle(slug, markdown) {
+  if (isRemoteConfigured()) {
+    return writeRemote(slug, markdown);
+  }
+  return writeLocal(slug, markdown);
+}
+
+export const publishMode = isRemoteConfigured() ? "GitHub API" : "Local disk";

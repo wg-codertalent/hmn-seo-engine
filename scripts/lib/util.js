@@ -21,6 +21,14 @@ export function dedupeByKeyword(items) {
   return [...seen.values()].sort((a, b) => b.final_score - a.final_score);
 }
 
+function yamlQuote(str) {
+  if (!str) return '""';
+  // Strip any surrounding quotes the LLM may have added
+  const clean = str.replace(/^["']|["']$/g, "").trim();
+  // Always use single quotes — escape internal single quotes by doubling them
+  return `'${clean.replace(/'/g, "''")}'`;
+}
+
 export function buildFrontmatter({ title, slug, excerpt, cover, category, articleDate, seoTitle, seoDescription, ctaBanners }) {
   const { author } = seeds;
   const banners = (ctaBanners || ["get-my-free-income-projection", "book-a-call", "whatsapp-message"])
@@ -28,21 +36,22 @@ export function buildFrontmatter({ title, slug, excerpt, cover, category, articl
     .join("\n");
   return `---
 layout: article
-title: "${title}"
+title: ${yamlQuote(title)}
 slug: ${slug}
 excerpt: >
-  ${excerpt}
+  ${(excerpt || "").replace(/^["']|["']$/g, "").trim()}
 cover: ${cover}
 category: ${category}
 articleDate: ${articleDate}
 published: true
 ctaBanners:
 ${banners}
-seoTitle: ${seoTitle}
-seoDescription: "${seoDescription}"
+seoTitle: ${yamlQuote(seoTitle)}
+seoDescription: ${yamlQuote(seoDescription)}
 author:
   name: ${author.name}
-  bio: ${author.bio}
+  bio: >
+    ${author.bio}
 ---
 `;
 }
