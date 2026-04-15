@@ -9,6 +9,7 @@ import {
   writeArticle, imageAbsPath, imageRelUrl, articleRelPath, publishMode
 } from "./lib/github.js";
 import { getRows, storeName } from "./lib/store.js";
+import { notifyPublished, notifyFailed } from "./lib/slack.js";
 import { slugify, today, buildFrontmatter } from "./lib/util.js";
 
 async function main() {
@@ -95,8 +96,11 @@ async function main() {
 
     console.log(`✓ Published ${slug}`);
     console.log(`  ${mdPath}`);
+
+    await notifyPublished({ title: item.title, slug, category, prUrl: mdPath });
   } catch (err) {
     await row.update({ status: "error", error: String(err.message || err) });
+    await notifyFailed({ title: item.title, error: err.message || err });
     throw err;
   }
 }

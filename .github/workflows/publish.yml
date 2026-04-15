@@ -27,6 +27,7 @@ jobs:
           GEMINI_API_KEY:              ${{ secrets.GEMINI_API_KEY }}
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           GOOGLE_SHEET_ID:             ${{ secrets.GOOGLE_SHEET_ID }}
+          SLACK_WEBHOOK_URL:           ${{ secrets.SLACK_WEBHOOK_URL }}
         run: npm run publish
       - name: Commit generated article + image
         working-directory: ${{ github.workspace }}
