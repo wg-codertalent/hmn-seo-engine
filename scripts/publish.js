@@ -86,6 +86,7 @@ async function main() {
     await row.update({
       status: "published",
       slug,
+      category,
       excerpt,
       cover: imageRelUrl(slug),
       markdown_path: articleRelPath(slug),

@@ -44,7 +44,7 @@ export const articleUser = ({ title, keyword, category, internalLinks = [] }) =>
   const articleLinks = internalLinks.map((l) => ({ url: `/blog/${l.slug}`, topic: l.title }));
   const allLinks = [...SITE_PAGES, ...articleLinks];
 
-  const linkBlock = `\n\nInternal links available — pick 3–6 of the most topically relevant ones and weave them in as natural inline markdown links, e.g. [anchor text](${allLinks[0].url}). Rules: only link when it genuinely helps the reader, use varied anchor text (never the bare URL), never link the same URL twice, and never place links in the intro or The Bottom Line.
+  const linkBlock = `\n\nInternal links available — pick 3–6 of the most topically relevant ones and place them in The Bottom Line section as natural inline markdown links, e.g. [anchor text](${allLinks[0].url}). Rules: only link when it genuinely helps the reader, use varied anchor text (never the bare URL), never link the same URL twice, keep the intro and body sections link-free so all internal links land in The Bottom Line.
 ${allLinks.map((l) => `- ${l.url} — ${l.topic}`).join("\n")}`;
 
   return `Write a 1,500–2,200 word SEO article.
