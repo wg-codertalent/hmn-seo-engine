@@ -5,7 +5,8 @@ import { fetchReddit } from "./lib/sources/reddit.js";
 import { fetchTrends } from "./lib/sources/trends.js";
 import { fetchSuggest } from "./lib/sources/suggest.js";
 import { dedupeByKeyword, today } from "./lib/util.js";
-import { getRows, appendRows, storeName } from "./lib/store.js";
+import { getRows, appendRows, tabUrl, storeName } from "./lib/store.js";
+import { notifyDiscovered, notifyFailed } from "./lib/slack.js";
 
 async function main() {
   console.log(`Backend: ${storeName}`);
@@ -37,16 +38,23 @@ async function main() {
       status: "new"
     }));
 
+  const reviewUrl = await tabUrl("Ideas");
+
   if (!fresh.length) {
     console.log("No new ideas — all already present.");
+    await notifyDiscovered({ count: 0, total: scored.length, reviewUrl });
     return;
   }
 
   await appendRows("Ideas", fresh);
   console.log(`✓ Added ${fresh.length} new ideas.`);
+
+  const top = [...fresh].sort((a, b) => b.final_score - a.final_score);
+  await notifyDiscovered({ count: fresh.length, total: scored.length, top, reviewUrl });
 }
 
-main().catch((err) => {
+main().catch(async (err) => {
   console.error(err);
+  await notifyFailed({ title: "Discover", error: err.message || err });
   process.exit(1);
 });

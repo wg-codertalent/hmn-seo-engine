@@ -48,4 +48,6 @@ export async function appendRows(name, records) {
   await writeFile(name, rows);
 }
 
+export async function tabUrl() { return null; }
+
 export function isConfigured() { return true; }

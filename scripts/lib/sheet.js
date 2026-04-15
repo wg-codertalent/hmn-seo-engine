@@ -38,6 +38,11 @@ export async function appendRows(name, records) {
   await sheet.addRows(records);
 }
 
+export async function tabUrl(name) {
+  const sheet = await tab(name);
+  return `https://docs.google.com/spreadsheets/d/${process.env.GOOGLE_SHEET_ID}/edit#gid=${sheet.sheetId}`;
+}
+
 class RowProxy {
   constructor(row) { this._row = row; }
   get(k) { return this._row.get(k); }
