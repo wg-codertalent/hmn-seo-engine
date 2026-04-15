@@ -8,10 +8,6 @@ on:
 permissions:
   contents: write
 
-defaults:
-  run:
-    working-directory: seo-engine
-
 jobs:
   discover:
     runs-on: ubuntu-latest
@@ -20,19 +16,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - run: npm install
+      - run: yarn install --frozen-lockfile
       - name: Run discovery
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           GOOGLE_SHEET_ID:             ${{ secrets.GOOGLE_SHEET_ID }}
-        run: npm run discover
+          SLACK_WEBHOOK_URL:           ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: yarn run discover
       - name: Commit fallback file if changed
-        working-directory: ${{ github.workspace }}
         run: |
           git config user.name  "seo-bot"
           git config user.email "seo-bot@users.noreply.github.com"
-          if [[ -n "$(git status --porcelain seo-engine/data/content-ideas.json)" ]]; then
-            git add seo-engine/data/content-ideas.json
+          if [[ -n "$(git status --porcelain data/content-ideas.json)" ]]; then
+            git add data/content-ideas.json
             git commit -m "chore(seo): refresh content ideas"
             git push
           fi

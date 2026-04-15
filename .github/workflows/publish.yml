@@ -8,10 +8,6 @@ on:
 permissions:
   contents: write
 
-defaults:
-  run:
-    working-directory: seo-engine
-
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -20,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - run: npm install
+      - run: yarn install --frozen-lockfile
       - name: Run publisher
         env:
           ANTHROPIC_API_KEY:           ${{ secrets.ANTHROPIC_API_KEY }}
@@ -28,15 +24,17 @@ jobs:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           GOOGLE_SHEET_ID:             ${{ secrets.GOOGLE_SHEET_ID }}
           SLACK_WEBHOOK_URL:           ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: npm run publish
-      - name: Commit generated article + image
-        working-directory: ${{ github.workspace }}
+          BLOG_REPO_OWNER:             ${{ secrets.BLOG_REPO_OWNER }}
+          BLOG_REPO_NAME:              ${{ secrets.BLOG_REPO_NAME }}
+          BLOG_REPO_TOKEN:             ${{ secrets.BLOG_REPO_TOKEN }}
+          BLOG_REPO_BRANCH:            ${{ secrets.BLOG_REPO_BRANCH }}
+        run: yarn run pub
+      - name: Commit queue changes if any
         run: |
           git config user.name  "seo-bot"
           git config user.email "seo-bot@users.noreply.github.com"
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git add content/articles public/images/uploads seo-engine/data
-            SLUG=$(git diff --cached --name-only content/articles | head -n1 | xargs -I{} basename {} .md)
-            git commit -m "feat(blog): publish ${SLUG:-new article}"
+          if [[ -n "$(git status --porcelain data)" ]]; then
+            git add data
+            git commit -m "chore(seo): update article queue"
             git push
           fi
