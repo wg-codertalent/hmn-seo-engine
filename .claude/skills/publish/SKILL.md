@@ -7,7 +7,7 @@ allowed-tools: Bash(node *)
 
 Run the publishing stage of the SEO pipeline.
 
-Requires `ANTHROPIC_API_KEY` and `OPENAI_API_KEY` environment variables.
+Requires `ANTHROPIC_API_KEY` and `GEMINI_API_KEY` environment variables.
 
 ```bash
 node scripts/publish.js

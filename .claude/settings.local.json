@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npx --yes @mermaid-js/mermaid-cli -i pipeline-flow.mmd -o pipeline-flow.png -b transparent --scale 3)",
-      "Bash(node --input-type=module -e ':*)"
+      "Bash(node --input-type=module -e ':*)",
+      "Bash(node --env-file=.env -e ' *)"
     ]
   }
 }

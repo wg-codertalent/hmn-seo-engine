@@ -87,9 +87,8 @@ Available banners:
 Select one or more. Output ONLY the banner IDs, one per line, nothing else.`;
 
 export const imagePrompt = (title) =>
-  `Beautiful editorial interior photograph of a stylish short-term rental property in London, ` +
-  `relevant to "${title}". Could be the living room of a Georgian townhouse in Notting Hill, ` +
-  `a bright open-plan kitchen in Kensington, a cosy bedroom in a modern Shoreditch loft, ` +
-  `an elegant lounge in a Chelsea apartment, or a sunlit dining area in a Hampstead period home. ` +
-  `Interior focus, bright natural light, tasteful decor, lifestyle magazine quality, photorealistic, 16:9. ` +
-  `ABSOLUTELY NO TEXT, NO LETTERS, NO WORDS, NO SIGNAGE, NO WATERMARKS, NO LOGOS anywhere in the image.`;
+  `Editorial interior photograph of a stylish short-term rental property in London, relevant to "${title}". ` +
+  `Pick one setting that fits the topic: a Georgian townhouse living room in Notting Hill, a bright open-plan ` +
+  `kitchen in Kensington, a cosy bedroom in a modern Shoreditch loft, an elegant lounge in a Chelsea apartment, ` +
+  `or a sunlit dining area in a Hampstead period home. Bright natural light, tasteful decor, lifestyle magazine ` +
+  `quality, photorealistic. The image must contain no text, signage, watermarks, or logos of any kind.`;

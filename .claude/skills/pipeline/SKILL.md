@@ -18,7 +18,7 @@ Run the SEO content pipeline. The user can specify a stage or run all three in o
 
 - If `$ARGUMENTS` is empty or `all`, run all three stages in order: discover → promote → publish
 - If `$ARGUMENTS` is a specific stage name, run only that stage
-- Before running, confirm the required env vars are set (ANTHROPIC_API_KEY, OPENAI_API_KEY for publish)
+- Before running, confirm the required env vars are set (ANTHROPIC_API_KEY, GEMINI_API_KEY for publish)
 - Show the output of each stage clearly
 - If any stage fails, stop and report the error — do not continue to the next stage
 

@@ -65,7 +65,7 @@ Node 20+ required.
 | Name | Required? | Purpose |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | yes | Claude Opus 4.6 |
-| `OPENAI_API_KEY` | yes | Cover images (`gpt-image-1`) |
+| `GEMINI_API_KEY` | yes | Cover images (Gemini 3 Pro Image / Nano Banana 2) |
 | `GOOGLE_SERVICE_ACCOUNT_JSON` | no | Enables Sheets backend |
 | `GOOGLE_SHEET_ID` | no | Spreadsheet ID |
 | `ARTICLES_DIR` | no | Default `content/articles` |
@@ -91,7 +91,7 @@ This repo is designed to sit **inside** the Endalai blog repo as `seo-engine/`. 
 In repo Settings → Secrets → Actions:
 
 - `ANTHROPIC_API_KEY`
-- `OPENAI_API_KEY`
+- `GEMINI_API_KEY`
 - `GOOGLE_SERVICE_ACCOUNT_JSON` (full JSON, optional)
 - `GOOGLE_SHEET_ID` (optional)
 

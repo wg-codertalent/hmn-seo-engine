@@ -13,7 +13,7 @@ import { slugify, today, buildFrontmatter } from "./lib/util.js";
 
 async function main() {
   if (!process.env.ANTHROPIC_API_KEY) throw new Error("Missing ANTHROPIC_API_KEY");
-  if (!process.env.OPENAI_API_KEY)    throw new Error("Missing OPENAI_API_KEY");
+  if (!process.env.GEMINI_API_KEY)    throw new Error("Missing GEMINI_API_KEY");
 
   console.log(`Backend: ${storeName} | Publish: ${publishMode}`);
   const rows = await getRows("Articles");

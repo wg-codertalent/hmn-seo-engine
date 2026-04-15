@@ -18,7 +18,7 @@ Three stages, each a standalone Node script:
 
 - Node >= 20, ES modules (`"type": "module"`)
 - Claude Opus 4.6 via raw `fetch` to the Anthropic Messages API (`scripts/lib/claude.js`)
-- OpenAI image generation for cover images (`scripts/lib/images.js`)
+- Gemini 3 Pro Image (Nano Banana 2) for cover images (`scripts/lib/images.js`)
 - Google Sheets as primary data store, JSON files as fallback (`scripts/lib/store.js`)
 - No frameworks — plain scripts with shared libs under `scripts/lib/`
 
@@ -55,7 +55,7 @@ tests/
 ## Environment Variables
 
 - `ANTHROPIC_API_KEY` — required for promote and publish stages
-- `OPENAI_API_KEY` — required for publish stage (cover images)
+- `GEMINI_API_KEY` — required for publish stage (cover images via Gemini 3 Pro Image)
 - `GOOGLE_SERVICE_ACCOUNT_EMAIL` + `GOOGLE_PRIVATE_KEY` + `GOOGLE_SHEET_ID` — optional, enables Google Sheets backend
 
 ## Data Model

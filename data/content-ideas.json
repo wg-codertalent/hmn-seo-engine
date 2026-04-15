@@ -1,1 +1,1199 @@
-[]
+[
+  {
+    "source": "google_trends",
+    "keyword": "m&s sparks",
+    "trend_score": 2000,
+    "reddit_score": 0,
+    "final_score": 1200,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_trends",
+    "keyword": "donald trump sky news interview",
+    "trend_score": 500,
+    "reddit_score": 0,
+    "final_score": 300,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_trends",
+    "keyword": "sony playstation plus games leak",
+    "trend_score": 500,
+    "reddit_score": 0,
+    "final_score": 300,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_trends",
+    "keyword": "helen mirren",
+    "trend_score": 200,
+    "reddit_score": 0,
+    "final_score": 120,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_trends",
+    "keyword": "red sea",
+    "trend_score": 200,
+    "reddit_score": 0,
+    "final_score": 120,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_trends",
+    "keyword": "this morning",
+    "trend_score": 200,
+    "reddit_score": 0,
+    "final_score": 120,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_trends",
+    "keyword": "england council tax reform",
+    "trend_score": 200,
+    "reddit_score": 0,
+    "final_score": 120,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_trends",
+    "keyword": "chatteris",
+    "trend_score": 200,
+    "reddit_score": 0,
+    "final_score": 120,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Well, that’s a new one. Guest moved *all* her personal possessions into our Airbnb for a week.",
+    "trend_score": 0,
+    "reddit_score": 200,
+    "final_score": 80,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Is it standard to leave house keys easily accessible outside? [US]",
+    "trend_score": 0,
+    "reddit_score": 200,
+    "final_score": 80,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Previous Owner Potentially Lied about Septic System",
+    "trend_score": 0,
+    "reddit_score": 200,
+    "final_score": 80,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Update: Stolen Pots and Pans",
+    "trend_score": 0,
+    "reddit_score": 194,
+    "final_score": 78,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Host kept medicine left behind, unless I remove negative review [Malaysia]",
+    "trend_score": 0,
+    "reddit_score": 194,
+    "final_score": 78,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Help! Guest made a reservation for 1 but 8 people have checked in.",
+    "trend_score": 0,
+    "reddit_score": 188,
+    "final_score": 75,
+    "discovered_at": "2026-04-15",
+    "status": "queued"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Why so few comfortable seating areas? [USA/CAN]",
+    "trend_score": 0,
+    "reddit_score": 188,
+    "final_score": 75,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "I co-own a duplex. Should we sell even if it’s co-owners primary residence?",
+    "trend_score": 0,
+    "reddit_score": 188,
+    "final_score": 75,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "“Influencers” want to book for free",
+    "trend_score": 0,
+    "reddit_score": 182,
+    "final_score": 73,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Host is asking me to change my dates [Montreal]",
+    "trend_score": 0,
+    "reddit_score": 182,
+    "final_score": 73,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Rental Property Upgrades - Best Way to Pay?",
+    "trend_score": 0,
+    "reddit_score": 177,
+    "final_score": 71,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "I am a US based host, but staying in Japan and got this message from Airbnb …",
+    "trend_score": 0,
+    "reddit_score": 176,
+    "final_score": 70,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Is this weird to message an Airbnb Host? [USA]",
+    "trend_score": 0,
+    "reddit_score": 176,
+    "final_score": 70,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Guest Issue Airbnb is banning my &quot;Pink Maximalist&quot; Warehouse because of a pro-scammer and a dead.",
+    "trend_score": 0,
+    "reddit_score": 170,
+    "final_score": 68,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Forgot item at stay and now host ghosted us after confirming they have it [US]",
+    "trend_score": 0,
+    "reddit_score": 170,
+    "final_score": 68,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "guest had a baby shower at our home, took something of ours, is it worth calling airbnb services?",
+    "trend_score": 0,
+    "reddit_score": 164,
+    "final_score": 66,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Heated pool/hot tub not working. What are my options? [USA]",
+    "trend_score": 0,
+    "reddit_score": 164,
+    "final_score": 66,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Should I upgrade my rental before re-listing it or re-list as is, it's in good condition but could use some cosmetic update",
+    "trend_score": 0,
+    "reddit_score": 165,
+    "final_score": 66,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "There are two types of guests: Those who break a window and tell you and those who don’t.",
+    "trend_score": 0,
+    "reddit_score": 158,
+    "final_score": 63,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Refund on misleading listing information on privacy of the bathroom [IT]",
+    "trend_score": 0,
+    "reddit_score": 158,
+    "final_score": 63,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Buying remote for yield vs staying in tier 1 market",
+    "trend_score": 0,
+    "reddit_score": 154,
+    "final_score": 62,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "My dear fellow hosts, please take timestamped pictures and videos of every corner before guests check-in!",
+    "trend_score": 0,
+    "reddit_score": 152,
+    "final_score": 61,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Plumbers in and out of unit with short notice for non-emergency repairs desired by hosts (not requested by me) - [US]",
+    "trend_score": 0,
+    "reddit_score": 152,
+    "final_score": 61,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_trends",
+    "keyword": "hathernware industrial estate",
+    "trend_score": 100,
+    "reddit_score": 0,
+    "final_score": 60,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_trends",
+    "keyword": "arc raiders",
+    "trend_score": 100,
+    "reddit_score": 0,
+    "final_score": 60,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "cleaner no-showed and I found out when the next guest texted me",
+    "trend_score": 0,
+    "reddit_score": 146,
+    "final_score": 58,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Help! Airbnb hosts accused me of bringing a gun to their property…I don’t even own a gun and we never saw each other face to face…[USA]",
+    "trend_score": 0,
+    "reddit_score": 146,
+    "final_score": 58,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Pet Policy?",
+    "trend_score": 0,
+    "reddit_score": 142,
+    "final_score": 57,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Retaliatory review allowed to stand!",
+    "trend_score": 0,
+    "reddit_score": 140,
+    "final_score": 56,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "48 Hours From Arrival and No Communication From Host [UK]",
+    "trend_score": 0,
+    "reddit_score": 140,
+    "final_score": 56,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Discount Seekers",
+    "trend_score": 0,
+    "reddit_score": 134,
+    "final_score": 54,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Scammer has details of my AirBnB booking! [UK]",
+    "trend_score": 0,
+    "reddit_score": 134,
+    "final_score": 54,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Type of paint on rentals",
+    "trend_score": 0,
+    "reddit_score": 131,
+    "final_score": 52,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Why are you allowed to rate the location?",
+    "trend_score": 0,
+    "reddit_score": 128,
+    "final_score": 51,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Host is asking us to stay In another location on the second half of our stay [Vietnam]",
+    "trend_score": 0,
+    "reddit_score": 128,
+    "final_score": 51,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Constant Party Messages",
+    "trend_score": 0,
+    "reddit_score": 122,
+    "final_score": 49,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Having to &quot;Verify with ID&quot; outside the app [USA]",
+    "trend_score": 0,
+    "reddit_score": 122,
+    "final_score": 49,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "What Would You Do?",
+    "trend_score": 0,
+    "reddit_score": 119,
+    "final_score": 48,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Guest left a 4 star review for a concern they never raised. But left a nice note on the private notes section",
+    "trend_score": 0,
+    "reddit_score": 116,
+    "final_score": 46,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Retaliatory review allowed to stand despite breaking the Content Policy [CAN]",
+    "trend_score": 0,
+    "reddit_score": 116,
+    "final_score": 46,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Flushing wash cloths!",
+    "trend_score": 0,
+    "reddit_score": 110,
+    "final_score": 44,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "The garage is not for use, but a review suggests people might be in there, do we cancel? [US]",
+    "trend_score": 0,
+    "reddit_score": 110,
+    "final_score": 44,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Submetering Triplex - NC",
+    "trend_score": 0,
+    "reddit_score": 108,
+    "final_score": 43,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Masters Guests Overly Picky",
+    "trend_score": 0,
+    "reddit_score": 104,
+    "final_score": 42,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "It looks like you might be planning an unauthorized or disruptive party [Canada]",
+    "trend_score": 0,
+    "reddit_score": 104,
+    "final_score": 42,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Late date, change request what would you do?",
+    "trend_score": 0,
+    "reddit_score": 98,
+    "final_score": 39,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "A question for hosts [Punta Cana stay] Recent Stay",
+    "trend_score": 0,
+    "reddit_score": 98,
+    "final_score": 39,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Blatant Self-Promotion Thread: April 14, 2026",
+    "trend_score": 0,
+    "reddit_score": 96,
+    "final_score": 38,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Guest unhappy but stays anyway, now wants compensation or bad review - What do we do here?",
+    "trend_score": 0,
+    "reddit_score": 92,
+    "final_score": 37,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Host told my brother to cancel a 2 month in advance trip [Florida]",
+    "trend_score": 0,
+    "reddit_score": 92,
+    "final_score": 37,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb london",
+    "trend_score": 60,
+    "reddit_score": 0,
+    "final_score": 36,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb hosting",
+    "trend_score": 60,
+    "reddit_score": 0,
+    "final_score": 36,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "short term rental uk",
+    "trend_score": 60,
+    "reddit_score": 0,
+    "final_score": 36,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "property management london",
+    "trend_score": 60,
+    "reddit_score": 0,
+    "final_score": 36,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "holiday let london",
+    "trend_score": 60,
+    "reddit_score": 0,
+    "final_score": 36,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "renters rights act",
+    "trend_score": 60,
+    "reddit_score": 0,
+    "final_score": 36,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Increased cancellations?",
+    "trend_score": 0,
+    "reddit_score": 86,
+    "final_score": 34,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Having trouble with gift card and customer service is not helping at all [USA]",
+    "trend_score": 0,
+    "reddit_score": 86,
+    "final_score": 34,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Neighbor’s tree ripping up foundation (US-CA)",
+    "trend_score": 0,
+    "reddit_score": 85,
+    "final_score": 34,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb london uk",
+    "trend_score": 56,
+    "reddit_score": 0,
+    "final_score": 34,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb hosting login",
+    "trend_score": 56,
+    "reddit_score": 0,
+    "final_score": 34,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "short term rental uk reddit",
+    "trend_score": 56,
+    "reddit_score": 0,
+    "final_score": 34,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "property management london ontario",
+    "trend_score": 56,
+    "reddit_score": 0,
+    "final_score": 34,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "holiday let london uk",
+    "trend_score": 56,
+    "reddit_score": 0,
+    "final_score": 34,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "renters rights act 2025",
+    "trend_score": 56,
+    "reddit_score": 0,
+    "final_score": 34,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Received a weird inquiry",
+    "trend_score": 0,
+    "reddit_score": 80,
+    "final_score": 32,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "advices on becoming a co-host????? [IND]",
+    "trend_score": 0,
+    "reddit_score": 80,
+    "final_score": 32,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb london england",
+    "trend_score": 52,
+    "reddit_score": 0,
+    "final_score": 31,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb hosting fees",
+    "trend_score": 52,
+    "reddit_score": 0,
+    "final_score": 31,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "short term rental uk london",
+    "trend_score": 52,
+    "reddit_score": 0,
+    "final_score": 31,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "property management london jobs",
+    "trend_score": 52,
+    "reddit_score": 0,
+    "final_score": 31,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "holiday let london central",
+    "trend_score": 52,
+    "reddit_score": 0,
+    "final_score": 31,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "renters rights act 2026",
+    "trend_score": 52,
+    "reddit_score": 0,
+    "final_score": 31,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "First guests",
+    "trend_score": 0,
+    "reddit_score": 74,
+    "final_score": 30,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Should I be concerned? New host new listing great price and location [CA]",
+    "trend_score": 0,
+    "reddit_score": 74,
+    "final_score": 30,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Wet funds - wholesaling",
+    "trend_score": 0,
+    "reddit_score": 73,
+    "final_score": 29,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb london ontario",
+    "trend_score": 48,
+    "reddit_score": 0,
+    "final_score": 29,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb hosting nz",
+    "trend_score": 48,
+    "reddit_score": 0,
+    "final_score": 29,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "short term rental uk car",
+    "trend_score": 48,
+    "reddit_score": 0,
+    "final_score": 29,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "property management london ky",
+    "trend_score": 48,
+    "reddit_score": 0,
+    "final_score": 29,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "holiday homes london",
+    "trend_score": 48,
+    "reddit_score": 0,
+    "final_score": 29,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "renters rights act uk",
+    "trend_score": 48,
+    "reddit_score": 0,
+    "final_score": 29,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Weird message…. What do you think?",
+    "trend_score": 0,
+    "reddit_score": 68,
+    "final_score": 27,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Question: Airbnb Host Expectations in Europe vs America [France]",
+    "trend_score": 0,
+    "reddit_score": 68,
+    "final_score": 27,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb london central",
+    "trend_score": 44,
+    "reddit_score": 0,
+    "final_score": 26,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb hosting companies",
+    "trend_score": 44,
+    "reddit_score": 0,
+    "final_score": 26,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "short term rent uk",
+    "trend_score": 44,
+    "reddit_score": 0,
+    "final_score": 26,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "property management london salary",
+    "trend_score": 44,
+    "reddit_score": 0,
+    "final_score": 26,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "holiday accommodation london",
+    "trend_score": 44,
+    "reddit_score": 0,
+    "final_score": 26,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "renters rights act 2025 uk",
+    "trend_score": 44,
+    "reddit_score": 0,
+    "final_score": 26,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Booking requests are mostly for events/parties. It’s tanking my acceptance rate.",
+    "trend_score": 0,
+    "reddit_score": 62,
+    "final_score": 25,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Cohost sent me an odd message. Should i report it? [Poland]",
+    "trend_score": 0,
+    "reddit_score": 62,
+    "final_score": 25,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "I’m UC on a property in a new market for $175k, Zillow shows it at $250k. How would you find local RE investors for this in a new market?",
+    "trend_score": 0,
+    "reddit_score": 62,
+    "final_score": 25,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb london city centre",
+    "trend_score": 40,
+    "reddit_score": 0,
+    "final_score": 24,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb hosting tips",
+    "trend_score": 40,
+    "reddit_score": 0,
+    "final_score": 24,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "short term rentals ukiah",
+    "trend_score": 40,
+    "reddit_score": 0,
+    "final_score": 24,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "property management london uk",
+    "trend_score": 40,
+    "reddit_score": 0,
+    "final_score": 24,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "holiday cottages london",
+    "trend_score": 40,
+    "reddit_score": 0,
+    "final_score": 24,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "renters rights act pets",
+    "trend_score": 40,
+    "reddit_score": 0,
+    "final_score": 24,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Time to Change Cancellation Policy?",
+    "trend_score": 0,
+    "reddit_score": 56,
+    "final_score": 22,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "reddit",
+    "keyword": "Has anyone seen a jump this insane? [Bergen, NO]",
+    "trend_score": 0,
+    "reddit_score": 56,
+    "final_score": 22,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb london cheap",
+    "trend_score": 36,
+    "reddit_score": 0,
+    "final_score": 22,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb hosting requirements",
+    "trend_score": 36,
+    "reddit_score": 0,
+    "final_score": 22,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "short term lets uk",
+    "trend_score": 36,
+    "reddit_score": 0,
+    "final_score": 22,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "property management london ontario rentals",
+    "trend_score": 36,
+    "reddit_score": 0,
+    "final_score": 22,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "holiday rentals in london",
+    "trend_score": 36,
+    "reddit_score": 0,
+    "final_score": 22,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "renters rights act may 2026",
+    "trend_score": 36,
+    "reddit_score": 0,
+    "final_score": 22,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb london office",
+    "trend_score": 32,
+    "reddit_score": 0,
+    "final_score": 19,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb hosting customer service",
+    "trend_score": 32,
+    "reddit_score": 0,
+    "final_score": 19,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "long term rental uk",
+    "trend_score": 32,
+    "reddit_score": 0,
+    "final_score": 19,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "property management london ltd",
+    "trend_score": 32,
+    "reddit_score": 0,
+    "final_score": 19,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "holiday house london",
+    "trend_score": 32,
+    "reddit_score": 0,
+    "final_score": 19,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "renters rights act 2026 uk",
+    "trend_score": 32,
+    "reddit_score": 0,
+    "final_score": 19,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb london ky",
+    "trend_score": 28,
+    "reddit_score": 0,
+    "final_score": 17,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb hosting jobs",
+    "trend_score": 28,
+    "reddit_score": 0,
+    "final_score": 17,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "short term accommodation uk",
+    "trend_score": 28,
+    "reddit_score": 0,
+    "final_score": 17,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "property management londonderry vt",
+    "trend_score": 28,
+    "reddit_score": 0,
+    "final_score": 17,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "holiday homes london uk",
+    "trend_score": 28,
+    "reddit_score": 0,
+    "final_score": 17,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "renters rights act rent increases",
+    "trend_score": 28,
+    "reddit_score": 0,
+    "final_score": 17,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb london prices",
+    "trend_score": 24,
+    "reddit_score": 0,
+    "final_score": 14,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "airbnb hosting app",
+    "trend_score": 24,
+    "reddit_score": 0,
+    "final_score": 14,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "short term tenancy uk",
+    "trend_score": 24,
+    "reddit_score": 0,
+    "final_score": 14,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "property management londonderry nh",
+    "trend_score": 24,
+    "reddit_score": 0,
+    "final_score": 14,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "holiday accommodation london uk",
+    "trend_score": 24,
+    "reddit_score": 0,
+    "final_score": 14,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  },
+  {
+    "source": "google_suggest",
+    "keyword": "renters rights act guidance",
+    "trend_score": 24,
+    "reddit_score": 0,
+    "final_score": 14,
+    "discovered_at": "2026-04-15",
+    "status": "new"
+  }
+]

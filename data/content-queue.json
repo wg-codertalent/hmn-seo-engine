@@ -1,9 +1,14 @@
 [
   {
-    "title": "5 Ways to Boost Airbnb Bookings in Winter",
-    "keyword": "airbnb winter bookings",
-    "category": "Property Management",
-    "status": "ready",
-    "notes": "Angle: low-season strategies for London hosts."
+    "title": "Handling Unexpected Extra Guests at Your Holiday Rental",
+    "keyword": "Help! Guest made a reservation for 1 but 8 people have checked in.",
+    "category": "",
+    "status": "published",
+    "articleDate": "2026-04-15",
+    "slug": "handling-unexpected-extra-guests-at-your-holiday-rental",
+    "excerpt": "Learn practical tips for managing surprise extra guests at your holiday rental, from setting clear policies to handling fees gracefully.",
+    "cover": "/images/uploads/handling-unexpected-extra-guests-at-your-holiday-rental.webp",
+    "markdown_path": "content/articles/handling-unexpected-extra-guests-at-your-holiday-rental.md",
+    "publishedAt": "2026-04-15"
   }
 ]
