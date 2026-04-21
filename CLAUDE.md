@@ -74,7 +74,8 @@ tests/
 
 - British English in all generated content
 - Prompts live in `config/prompts.js` — tune copy there, not in scripts
-- Internal links are concentrated in the `## The Bottom Line` section (intro/body stay link-free)
+- Internal links weave naturally through body H2/H3 sections and `## The Bottom Line` (intro stays link-free for punch)
+- Every article includes a `## Frequently Asked Questions` section with 4–6 H3 questions before The Bottom Line
 - Relevance filter (`isRelevant` in `util.js`) gates all discovery sources via topic/block token lists — tune there to change what's in/out
 - All scoring: `final_score = trend_score * 0.6 + min(reddit_score, 500) * 0.4`
 - Tests: `yarn test` (Node built-in test runner)

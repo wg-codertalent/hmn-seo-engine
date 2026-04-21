@@ -33,7 +33,7 @@ test("buildFrontmatter produces expected shape", () => {
     articleDate: "2026-04-07"
   });
   assert.match(fm, /^---\nlayout: article\n/);
-  assert.match(fm, /title: Test\n/);
+  assert.match(fm, /title: 'Test'\n/);
   assert.match(fm, /published: true\n/);
   assert.match(fm, /author:\n {2}name: /);
 });

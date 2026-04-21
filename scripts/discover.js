@@ -10,8 +10,16 @@ import { dedupeByKeyword, isRelevant, today } from "./lib/util.js";
 import { getRows, appendRows, tabUrl, storeName } from "./lib/store.js";
 import { notifyDiscovered, notifyFailed } from "./lib/slack.js";
 
+function expandSeeds(s) {
+  const personaSeeds = (s.personas || []).flatMap((p) => p.seedKeywords || []);
+  return [...new Set([...s.seedKeywords, ...personaSeeds])];
+}
+
 async function main() {
   console.log(`Backend: ${storeName}`);
+  const allSeeds = expandSeeds(seeds);
+  console.log(`Seed keywords: ${allSeeds.length} (${seeds.seedKeywords.length} general + ${allSeeds.length - seeds.seedKeywords.length} persona-anchored)`);
+
   console.log("Fetching Reddit RSS…");
   const reddit = (await Promise.all(seeds.subreddits.map(fetchReddit))).flat();
 
@@ -19,13 +27,13 @@ async function main() {
   const trends = await fetchTrends(seeds.trendsGeo);
 
   console.log("Fetching Google Suggest…");
-  const suggest = (await Promise.all(seeds.seedKeywords.map(fetchSuggest))).flat();
+  const suggest = (await Promise.all(allSeeds.map(fetchSuggest))).flat();
 
   console.log("Fetching Google News RSS…");
-  const news = (await Promise.all(seeds.seedKeywords.map((k) => fetchNews(k, seeds.trendsGeo)))).flat();
+  const news = (await Promise.all(allSeeds.map((k) => fetchNews(k, seeds.trendsGeo)))).flat();
 
   console.log("Fetching Bing Suggest…");
-  const bing = (await Promise.all(seeds.seedKeywords.map(fetchBingSuggest))).flat();
+  const bing = (await Promise.all(allSeeds.map(fetchBingSuggest))).flat();
 
   const raw = [...reddit, ...trends, ...suggest, ...news, ...bing];
   const relevant = raw.filter((i) => isRelevant(i.keyword));

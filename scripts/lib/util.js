@@ -20,6 +20,7 @@ const TOPIC_TOKENS = [
   "host", "hosting", "guest",
   "landlord", "tenant", "lettings", "letting agent",
   "renters rights", "renter's rights", "tenants rights",
+  "renters reform",
   "property management", "property investment"
 ];
 

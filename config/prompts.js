@@ -44,14 +44,14 @@ export const articleUser = ({ title, keyword, category, internalLinks = [] }) =>
   const articleLinks = internalLinks.map((l) => ({ url: `/blog/${l.slug}`, topic: l.title }));
   const allLinks = [...SITE_PAGES, ...articleLinks];
 
-  const linkBlock = `\n\nInternal links available — pick 3–6 of the most topically relevant ones and place them in The Bottom Line section as natural inline markdown links, e.g. [anchor text](${allLinks[0].url}). Rules: only link when it genuinely helps the reader, use varied anchor text (never the bare URL), never link the same URL twice, keep the intro and body sections link-free so all internal links land in The Bottom Line.
+  const linkBlock = `\n\nInternal links available — pick 5–8 of the most topically relevant ones and weave them naturally throughout the article as inline markdown links, e.g. [anchor text](${allLinks[0].url}). Rules: place links contextually where they genuinely help the reader (body H2/H3 sections and The Bottom Line are all fair game); keep the intro link-free for punch; use varied, descriptive anchor text (never the bare URL); never link the same URL twice; aim for at least 2–3 links inside the body sections before The Bottom Line so link equity is distributed, not clustered.
 ${allLinks.map((l) => `- ${l.url} — ${l.topic}`).join("\n")}`;
 
   return `Write a 1,500–2,200 word SEO article.
 Title: ${title}
 Primary keyword: ${keyword}
 Category: ${category}
-Structure: short intro, 5–7 H2 sections with H3 subsections where appropriate, closing section called '## The Bottom Line'.
+Structure: short intro, 5–7 H2 sections with H3 subsections where appropriate, a '## Frequently Asked Questions' section with 4–6 H3 questions (each answered in 2–4 concise sentences — questions should reflect genuine things readers would ask about this topic and include long-tail keyword variations), closing section called '## The Bottom Line'.
 In The Bottom Line section, summarise the key takeaways and mention how Host My Nest can help readers with their short-term rental needs — whether it's property management, compliance, pricing optimisation, or guest management. Keep it natural, not salesy.${linkBlock}`;
 };
 
