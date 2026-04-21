@@ -8,6 +8,53 @@
     "holiday let london",
     "renters rights act"
   ],
+  "personas": [
+    {
+      "id": "alan",
+      "name": "Accidental Landlord Alan",
+      "age": "45-55",
+      "description": "Busy professional with 1-2 properties. Not a pro investor; holds property alongside day job. Highly anxious about the Renters Reform Bill.",
+      "angle": "Reassurance, hand-holding, risk reduction, compliance simplification.",
+      "seedKeywords": [
+        "renters reform bill landlord",
+        "short term let vs long term london",
+        "alternatives to traditional renting landlord",
+        "hassle-free airbnb management london",
+        "short term let management fees london",
+        "is short term letting safer than long term"
+      ]
+    },
+    {
+      "id": "maya",
+      "name": "Modern Landlord Maya",
+      "age": "30-45",
+      "description": "Tech-savvy new investor with a property in an up-and-coming London hub (e.g. Vauxhall).",
+      "angle": "Data, tools, calculators, how-to guides, regulations in emerging London zones.",
+      "seedKeywords": [
+        "how to start an airbnb business london",
+        "best value airbnb management london",
+        "short term letting regulations wandsworth",
+        "airbnb earnings estimate vauxhall",
+        "property management revenue calculator london",
+        "airbnb rules london borough"
+      ]
+    },
+    {
+      "id": "isaac",
+      "name": "Investment Isaac",
+      "age": "55-70",
+      "description": "Established portfolio owner with 3+ prime Central London properties (e.g. Chelsea). Yield-focused.",
+      "angle": "Yield optimisation, premium/prime positioning, competitor comparisons, commission/fee transparency.",
+      "seedKeywords": [
+        "short term rental yields vs long term london",
+        "premium airbnb management chelsea",
+        "corporate short stay management london",
+        "full service property management commission london",
+        "direct booking platforms for landlords london",
+        "pass the keys vs host my nest"
+      ]
+    }
+  ],
   "trendsGeo": "GB",
   "defaultCategory": "Property Management",
   "author": {
