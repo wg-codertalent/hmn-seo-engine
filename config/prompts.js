@@ -87,11 +87,16 @@ Available banners:
 Select one or more. Output ONLY the banner IDs, one per line, nothing else.`;
 
 export const imagePrompt = (title) =>
-  `Editorial interior photograph of a luxury Airbnb or short-term rental property, relevant to "${title}". ` +
-  `Pick one interior setting from a varied mix of high-end rental property types: a penthouse living room ` +
-  `with skyline views, a warehouse-conversion loft with exposed brick and steel beams, a Georgian townhouse ` +
-  `drawing room with period features, a contemporary mews house kitchen-diner, a serviced apartment lounge ` +
-  `with designer furniture, a boutique studio flat in a restored period building, a country cottage sitting ` +
-  `room with beamed ceilings, or a modern riverside apartment with floor-to-ceiling windows. Bright natural ` +
-  `light, tasteful high-end decor, styled for guests, lifestyle magazine quality, photorealistic. The image ` +
+  `Editorial photograph for a blog article titled "${title}". The scene must visually echo the specific subject of that title ` +
+  `while staying clearly within the world of short-term rentals, Airbnb hosting, and property management in the UK. ` +
+  `Read the title and choose the most fitting concrete subject — for example: if it's about pricing or revenue, a host ` +
+  `at a laptop reviewing a booking calendar with a styled rental visible behind them; if it's about cleaning or turnovers, ` +
+  `a freshly made bed or spotless kitchen mid-changeover with linens and toiletries laid out; if it's about compliance, ` +
+  `regulation, or licensing, paperwork, keys and a front door of a London property; if it's about guest experience or welcome ` +
+  `packs, a thoughtfully arranged welcome tray, fresh flowers, and a handwritten note on a kitchen island; if it's about ` +
+  `investment or buy-to-let, exterior of a London townhouse or new-build apartment block with a 'to let' or sold context; ` +
+  `if it's about a specific London area or neighbourhood, a recognisable street or skyline of that area with residential ` +
+  `properties; if it's about interior styling or transformations, a tastefully staged living room or bedroom mid-styling. ` +
+  `If the title is more general, default to a bright, well-styled interior of a London short-term rental. Bright natural ` +
+  `light, tasteful decor, lifestyle magazine quality, photorealistic, shallow depth of field where appropriate. The image ` +
   `must contain no text, signage, watermarks, or logos of any kind.`;
