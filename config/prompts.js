@@ -15,25 +15,6 @@ export const CTA_BANNERS = [
   "whatsapp-message"
 ];
 
-// Static Host My Nest pages the article can link to. Keep anchors short and descriptive.
-export const SITE_PAGES = [
-  { url: "/services/airbnb-management",           topic: "Airbnb management services" },
-  { url: "/services/property-management",         topic: "Property management services" },
-  { url: "/services/short-term-rental-management", topic: "Short-term rental management" },
-  { url: "/services/personalised-welcome-packs",  topic: "Personalised welcome packs" },
-  { url: "/services/interior-design-and-furnishing", topic: "Interior design and furnishing" },
-  { url: "/services/photography",                 topic: "Professional property photography" },
-  { url: "/services/guest-vetting",               topic: "Guest vetting and screening" },
-  { url: "/services/guest-communication",         topic: "24/7 guest communication" },
-  { url: "/services/price-optimisation",          topic: "Dynamic pricing and revenue optimisation" },
-  { url: "/services",                             topic: "All Host My Nest services" },
-  { url: "/locations",                            topic: "London areas we cover" },
-  { url: "/earnings-estimator",                   topic: "Free short-term rental income estimator" },
-  { url: "/faqs",                                 topic: "Frequently asked questions" },
-  { url: "/about-us",                             topic: "About Host My Nest" },
-  { url: "/contact",                              topic: "Contact Host My Nest" }
-];
-
 export const ARTICLE_SYSTEM =
   "You are an expert SEO copywriter for Host My Nest, a short-term rental and property management company in London. " +
   "Write in clear British English. Use H2 (##) for main sections and H3 (###) for subsections, short paragraphs, " +
@@ -41,11 +22,10 @@ export const ARTICLE_SYSTEM =
   "Output ONLY the markdown article body — no frontmatter, no H1, no preamble.";
 
 export const articleUser = ({ title, keyword, category, internalLinks = [] }) => {
-  const articleLinks = internalLinks.map((l) => ({ url: `/blog/${l.slug}`, topic: l.title }));
-  const allLinks = [...SITE_PAGES, ...articleLinks];
-
-  const linkBlock = `\n\nInternal links available — pick 5–8 of the most topically relevant ones and weave them naturally throughout the article as inline markdown links, e.g. [anchor text](${allLinks[0].url}). Rules: place links contextually where they genuinely help the reader (body H2/H3 sections and The Bottom Line are all fair game); keep the intro link-free for punch; use varied, descriptive anchor text (never the bare URL); never link the same URL twice; aim for at least 2–3 links inside the body sections before The Bottom Line so link equity is distributed, not clustered.
-${allLinks.map((l) => `- ${l.url} — ${l.topic}`).join("\n")}`;
+  const linkBlock = internalLinks.length
+    ? `\n\nInternal links available — pick 5–8 of the most topically relevant ones and weave them naturally throughout the article as inline markdown links, e.g. [anchor text](${internalLinks[0].url}). Rules: place links contextually where they genuinely help the reader (body H2/H3 sections and The Bottom Line are all fair game); keep the intro link-free for punch; use varied, descriptive anchor text (never the bare URL); never link the same URL twice; aim for at least 2–3 links inside the body sections before The Bottom Line so link equity is distributed, not clustered.
+${internalLinks.map((l) => `- ${l.url} — ${l.topic}`).join("\n")}`
+    : "";
 
   return `Write a 1,500–2,200 word SEO article.
 Title: ${title}
@@ -76,15 +56,6 @@ export const categoryUser = (title, keyword) =>
   `Pick the single best category for an article titled "${title}" about "${keyword}".
 Available categories: ${CATEGORIES.join(", ")}
 Output ONLY the category name, nothing else.`;
-
-export const CTA_SYSTEM = "You select relevant call-to-action banners for blog articles.";
-export const ctaUser = (title, keyword) =>
-  `Pick the relevant CTA banners for an article titled "${title}" about "${keyword}".
-Available banners:
-- get-my-free-income-projection (for content about earnings, ROI, investment)
-- book-a-call (for content about services, management, getting started)
-- whatsapp-message (for quick questions, general enquiries)
-Select one or more. Output ONLY the banner IDs, one per line, nothing else.`;
 
 export const imagePrompt = (title) =>
   `Editorial photograph for a blog article titled "${title}". The scene must visually echo the specific subject of that title ` +
