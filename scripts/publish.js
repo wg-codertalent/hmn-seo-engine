@@ -2,7 +2,7 @@
 // Publishing job: pick next `ready` row → Claude Opus 4.6 → image → commit to blog repo.
 import {
   generateArticle, generateExcerpt, generateSeoTitle,
-  generateSeoDescription, generateCategory, generateCtaBanners
+  generateSeoDescription, generateCategory
 } from "./lib/claude.js";
 import { generateCoverImage } from "./lib/images.js";
 import {
@@ -10,7 +10,9 @@ import {
 } from "./lib/github.js";
 import { getRows, storeName } from "./lib/store.js";
 import { notifyPublished, notifyFailed } from "./lib/slack.js";
+import { fetchInternalLinks } from "./lib/sitemap.js";
 import { slugify, today, buildFrontmatter } from "./lib/util.js";
+import { CTA_BANNERS } from "../config/prompts.js";
 
 async function main() {
   if (!process.env.ANTHROPIC_API_KEY) throw new Error("Missing ANTHROPIC_API_KEY");
@@ -44,23 +46,19 @@ async function main() {
   const slug = item.slug || slugify(item.title);
   const articleDate = item.articleDate || today();
 
-  const internalLinks = rows
-    .filter((r) => (r.get("status") || "").trim() === "published" && r.get("slug") && r.get("title"))
-    .filter((r) => r.get("slug") !== slug)
-    .map((r) => ({ title: r.get("title"), slug: r.get("slug") }))
-    .slice(-25);
-
   try {
     await row.update({ status: "generating" });
 
-    console.log(`  Generating content… (${internalLinks.length} internal links available)`);
-    const [body, excerpt, category, seoTitle, seoDescription, ctaBanners] = await Promise.all([
+    const internalLinks = (await fetchInternalLinks()).filter((l) => l.url !== `/blog/${slug}`);
+    const ctaBanners = CTA_BANNERS;
+
+    console.log(`  Generating content… (${internalLinks.length} internal links from sitemaps)`);
+    const [body, excerpt, category, seoTitle, seoDescription] = await Promise.all([
       generateArticle({ ...item, internalLinks }),
       generateExcerpt(item.title),
       generateCategory(item.title, item.keyword),
       generateSeoTitle(item.title),
-      generateSeoDescription(item.title),
-      generateCtaBanners(item.title, item.keyword)
+      generateSeoDescription(item.title)
     ]);
 
     console.log(`  Category: ${category}`);

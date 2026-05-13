@@ -5,8 +5,7 @@ import {
   SEO_TITLE_SYSTEM, seoTitleUser,
   SEO_DESC_SYSTEM, seoDescUser,
   CATEGORY_SYSTEM, categoryUser,
-  CTA_SYSTEM, ctaUser,
-  CATEGORIES, CTA_BANNERS
+  CATEGORIES
 } from "../../config/prompts.js";
 
 const MODEL = "claude-opus-4-6";
@@ -52,10 +51,4 @@ export async function generateCategory(title, keyword) {
   const raw = await call({ system: CATEGORY_SYSTEM, user: categoryUser(title, keyword), maxTokens: 40 });
   const match = CATEGORIES.find((c) => c.toLowerCase() === raw.toLowerCase().trim());
   return match || "Property Management";
-}
-
-export async function generateCtaBanners(title, keyword) {
-  const raw = await call({ system: CTA_SYSTEM, user: ctaUser(title, keyword), maxTokens: 100 });
-  const ids = raw.split("\n").map((l) => l.trim()).filter((l) => CTA_BANNERS.includes(l));
-  return ids.length ? ids : CTA_BANNERS;
 }
