@@ -1,4 +1,11 @@
 // All Claude prompt text lives here so it can be tuned without touching logic.
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
+
+const FACTS = JSON.parse(
+  readFileSync(join(dirname(fileURLToPath(import.meta.url)), "facts.json"), "utf8")
+);
 
 export const CATEGORIES = [
   "Hosting Tips",
@@ -16,23 +23,40 @@ export const CTA_BANNERS = [
 ];
 
 export const ARTICLE_SYSTEM =
-  "You are an expert SEO copywriter for Host My Nest, a short-term rental and property management company in London. " +
+  "You are an SEO copywriter for Host My Nest, a short-term rental and property management company in London. " +
   "Write in clear British English. Use H2 (##) for main sections and H3 (###) for subsections, short paragraphs, " +
   "and weave in contextually relevant internal links to related Host My Nest pages and articles from the supplied list. " +
+  "Do not invent specific numbers, prices, percentages, dates, statistics, named regulations, council policies, tax figures, " +
+  "or quoted research. If a specific is not provided in the inputs or the ground-truth block, write generically " +
+  "(\"typically\", \"in most cases\", \"check current rules with your local council\"). Hedging is preferred to false precision. " +
   "Output ONLY the markdown article body — no frontmatter, no H1, no preamble.";
+
+const groundTruthBlock = () => `Ground truth — use these facts, do not contradict them, and do not invent additional facts in these categories.
+
+Current year: ${FACTS.currentYear}.
+
+Host My Nest services (refer to these; do not invent additional services):
+${FACTS.brand.services.map((s) => `- ${s}`).join("\n")}
+
+Host My Nest coverage area: ${FACTS.brand.coverage}.
+
+UK short-term rental realities (do not misstate; do not introduce specific figures beyond what is stated here):
+${FACTS.ukStrRealities.map((r) => `- ${r}`).join("\n")}`;
 
 export const articleUser = ({ title, keyword, category, internalLinks = [] }) => {
   const linkBlock = internalLinks.length
-    ? `\n\nInternal links available — pick 5–8 of the most topically relevant ones and weave them naturally throughout the article as inline markdown links, e.g. [anchor text](${internalLinks[0].url}). Rules: place links contextually where they genuinely help the reader (body H2/H3 sections and The Bottom Line are all fair game); keep the intro link-free for punch; use varied, descriptive anchor text (never the bare URL); never link the same URL twice; aim for at least 2–3 links inside the body sections before The Bottom Line so link equity is distributed, not clustered.
+    ? `\n\nInternal links available — pick 5–8 of the most topically relevant ones and weave them naturally throughout the article as inline markdown links, e.g. [anchor text](${internalLinks[0].url}). Rules: place links contextually where they genuinely help the reader (body H2/H3 sections and The Bottom Line are all fair game); keep the intro link-free for punch; use varied, descriptive anchor text (never the bare URL); never link the same URL twice; aim for at least 2–3 links inside the body sections before The Bottom Line so link equity is distributed, not clustered. Where the article makes a substantive factual or service claim, either link to a relevant Host My Nest page from this list to support it, or phrase the claim generically — links should support claims, not just decorate.
 ${internalLinks.map((l) => `- ${l.url} — ${l.topic}`).join("\n")}`
     : "";
 
-  return `Write a 1,500–2,200 word SEO article.
+  return `Write an SEO article. Aim for 1,200–1,800 words. Do not pad with invented specifics, statistics, or examples to hit a length — a tighter article without fabricated detail is preferred to a longer one with invented figures.
 Title: ${title}
 Primary keyword: ${keyword}
 Category: ${category}
-Structure: short intro, 5–7 H2 sections with H3 subsections where appropriate, a '## Frequently Asked Questions' section with 4–6 H3 questions (each answered in 2–4 concise sentences — questions should reflect genuine things readers would ask about this topic and include long-tail keyword variations), closing section called '## The Bottom Line'.
-In The Bottom Line section, summarise the key takeaways and mention how Host My Nest can help readers with their short-term rental needs — whether it's property management, compliance, pricing optimisation, or guest management. Keep it natural, not salesy.${linkBlock}`;
+Structure: short intro, 5–7 H2 sections with H3 subsections where appropriate, a '## Frequently Asked Questions' section with 4–6 H3 questions (each answered in 3–5 concise sentences — questions should reflect genuine things readers would ask about this topic and include long-tail keyword variations; if a question would naturally require a specific figure, percentage, date, tax rate, or named regulation, either rephrase the question or answer it with hedging that points the reader to the appropriate authoritative source rather than inventing a number), closing section called '## The Bottom Line'.
+In The Bottom Line section, summarise the key takeaways and mention how Host My Nest can help readers with their short-term rental needs — whether it's property management, compliance, pricing optimisation, or guest management. Keep it natural, not salesy.
+
+${groundTruthBlock()}${linkBlock}`;
 };
 
 export const EXCERPT_SYSTEM = "You write concise SEO meta descriptions.";

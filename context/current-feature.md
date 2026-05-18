@@ -1,19 +1,27 @@
 # Current Feature
 
-<!-- Feature name and short description -->
+Phase 1 — Prompt hardening to reduce factual errors in generated articles.
 
 ## Status
 
-<!-- Not Started | In Progress | Completed -->
+In Progress
 
 ## Goals
 
-<!-- Goals and requirements  -->
-
-
+1. Soften the length requirement in `articleUser` — change "1,500–2,200 words" to "aim for 1,200–1,800 words; do not pad with invented specifics, statistics, or examples to hit a length".
+2. Add a no-invented-specifics rule to `ARTICLE_SYSTEM` — forbid invented numbers, prices, percentages, dates, statistics, named regulations, council policies, tax figures, or quoted research. Hedge instead.
+3. Rewrite the FAQ instruction — questions answerable generically without specifics; allow 3–5 sentence answers so there's room to qualify claims.
+4. Create `config/facts.json` with grounded context (current year, HMN's real services, London areas covered, UK STR realities). Inject into the user prompt as a "Ground truth" block.
+5. Tighten the internal-link rule — substantive factual or service claims should link to a relevant HMN page or be phrased generically. Links support claims, not just decorate.
+6. Drop "expert" from the persona in `ARTICLE_SYSTEM`.
 
 ## Notes
-<!-- Any extra notes -->
+
+- Phase 1 is prompt-side only. No new deps, no flow changes.
+- Phase 2 (automated fact-checker with Claude web search, `awaiting_review` status, PR/Slack report) is out of scope and will follow separately.
+- `config/facts.json` values must come from the user — do not invent HMN services or coverage areas.
+- Files in scope: `config/prompts.js` (all six edits), `config/facts.json` (new).
+- Acceptance: run `yarn pub` on three `ready` rows across different categories (Legal & Compliance, Revenue & Pricing, Hosting Tips) and confirm no invented UK figures, percentages, named regulations, or council policies; hedging present where specifics would have been invented.
 
 ## History
 
