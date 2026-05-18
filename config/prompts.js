@@ -33,7 +33,7 @@ export const ARTICLE_SYSTEM =
 
 const groundTruthBlock = () => `Ground truth — use these facts, do not contradict them, and do not invent additional facts in these categories.
 
-Current year: ${FACTS.currentYear}.
+Current year: ${new Date().getFullYear()}.
 
 Host My Nest services (refer to these; do not invent additional services):
 ${FACTS.brand.services.map((s) => `- ${s}`).join("\n")}
