@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 import { imagePrompt } from "../../config/prompts.js";
+import { fetchRetry } from "./util.js";
 
 const MODEL = "gemini-3.1-flash-image-preview";
 const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
@@ -11,7 +12,7 @@ export async function generateCoverImage(title, outPath) {
 
   const webpPath = outPath.replace(/\.png$/, ".webp");
 
-  const res = await fetch(`${ENDPOINT}?key=${process.env.GEMINI_API_KEY}`, {
+  const res = await fetchRetry(`${ENDPOINT}?key=${process.env.GEMINI_API_KEY}`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({

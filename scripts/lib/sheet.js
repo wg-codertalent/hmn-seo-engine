@@ -5,6 +5,22 @@ export function isConfigured() {
   return !!(process.env.GOOGLE_SERVICE_ACCOUNT_JSON && process.env.GOOGLE_SHEET_ID);
 }
 
+// Google's API returns transient 5xx/429 errors under load or brief outages.
+// Retry those with exponential backoff so a blip doesn't fail a whole run.
+const RETRYABLE = new Set([429, 500, 502, 503, 504]);
+async function withRetry(fn, { tries = 4, base = 500 } = {}) {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      const status = err?.response?.status ?? err?.status ?? err?.code;
+      if (!RETRYABLE.has(Number(status)) || attempt >= tries) throw err;
+      const delay = base * 2 ** (attempt - 1);
+      await new Promise((r) => setTimeout(r, delay));
+    }
+  }
+}
+
 let docPromise;
 async function getDoc() {
   if (docPromise) return docPromise;
@@ -15,7 +31,12 @@ async function getDoc() {
     scopes: ["https://www.googleapis.com/auth/spreadsheets"]
   });
   const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, jwt);
-  docPromise = doc.loadInfo().then(() => doc);
+  docPromise = withRetry(() => doc.loadInfo())
+    .then(() => doc)
+    .catch((err) => {
+      docPromise = undefined; // don't cache a failure — allow a later retry
+      throw err;
+    });
   return docPromise;
 }
 
@@ -28,14 +49,14 @@ async function tab(name) {
 
 export async function getRows(name) {
   const sheet = await tab(name);
-  const rows = await sheet.getRows();
+  const rows = await withRetry(() => sheet.getRows());
   return rows.map((r) => new RowProxy(r));
 }
 
 export async function appendRows(name, records) {
   if (!records.length) return;
   const sheet = await tab(name);
-  await sheet.addRows(records);
+  await withRetry(() => sheet.addRows(records));
 }
 
 export async function tabUrl(name) {
@@ -53,6 +74,6 @@ class RowProxy {
   }
   async update(updates) {
     for (const [k, v] of Object.entries(updates)) this._row.set(k, v);
-    await this._row.save();
+    await withRetry(() => this._row.save());
   }
 }

@@ -7,13 +7,14 @@ import {
   CATEGORY_SYSTEM, categoryUser,
   CATEGORIES
 } from "../../config/prompts.js";
+import { fetchRetry } from "./util.js";
 
 const MODEL = "claude-opus-4-6";
 const ENDPOINT = "https://api.anthropic.com/v1/messages";
 
 async function call({ system, user, maxTokens = 2500 }) {
   if (!process.env.ANTHROPIC_API_KEY) throw new Error("Missing ANTHROPIC_API_KEY");
-  const res = await fetch(ENDPOINT, {
+  const res = await fetchRetry(ENDPOINT, {
     method: "POST",
     headers: {
       "x-api-key": process.env.ANTHROPIC_API_KEY,

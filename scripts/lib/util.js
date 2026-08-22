@@ -42,6 +42,29 @@ export function isRelevant(keyword) {
   return TOPIC_TOKENS.some((t) => k.includes(t));
 }
 
+// Transient HTTP statuses worth retrying (server-side blips + rate limits).
+const RETRYABLE_STATUS = new Set([429, 500, 502, 503, 504]);
+
+// fetch() with exponential-backoff retries on transient failures. Retries on
+// network errors and retryable statuses; returns the Response for the caller to
+// handle (including a final non-ok one once retries are exhausted).
+export async function fetchRetry(url, options, { tries = 4, base = 500 } = {}) {
+  for (let attempt = 1; ; attempt++) {
+    let res;
+    try {
+      res = await fetch(url, options);
+    } catch (err) {
+      if (attempt >= tries) throw err; // network error — retry or give up
+      await sleep(base * 2 ** (attempt - 1));
+      continue;
+    }
+    if (!RETRYABLE_STATUS.has(res.status) || attempt >= tries) return res;
+    await sleep(base * 2 ** (attempt - 1));
+  }
+}
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
 export function dedupeByKeyword(items) {
   const seen = new Map();
   for (const i of items) {
