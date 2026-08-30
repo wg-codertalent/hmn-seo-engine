@@ -1,0 +1,18 @@
+{
+  "brand": {
+    "name": "Host My Nest",
+    "coverage": "All of Greater London",
+    "services": [
+      "Full property management for short-term rentals — listings, guest communication, cleaning and turnover coordination, maintenance",
+      "Pricing optimisation and dynamic pricing for short-term rental listings",
+      "Compliance and licensing support — 90-day rule, council registration, safety certificates, HMO and landlord requirements",
+      "Guest communication and vetting — inquiry handling, screening, 24/7 guest support"
+    ]
+  },
+  "ukStrRealities": [
+    "The 90-day rule applies in Greater London under the Deregulation Act 2015: entire-home short lets are capped at 90 nights per calendar year without planning permission. Do not invent specific fines, exemption thresholds, or borough-specific variations.",
+    "Local council requirements (registration schemes, planning permission, HMO licensing, selective licensing) vary by borough. Always advise readers to check with their local council rather than asserting a specific borough's rules.",
+    "Tax matters including Section 24 mortgage interest relief, Furnished Holiday Lettings (FHL) qualifying rules, allowable expenses, capital gains, and stamp duty change frequently. Do not state specific tax rates, allowances, or thresholds — advise consulting a qualified accountant or HMRC.",
+    "Short-term rentals are subject to gas safety, electrical safety, and fire and smoke alarm regulations. Do not invent specific certificate renewal intervals, wording, or penalty figures — advise checking current government and local authority guidance."
+  ]
+}
